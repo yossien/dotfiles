@@ -1,0 +1,119 @@
+let mapleader = "\<SPACE>"
+
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+set scrolloff=5
+set expandtab
+set autoindent
+set smartindent
+set noimdisable
+set iminsert=2
+
+" Copy to system clipboard as well
+set clipboard+=unnamed
+
+" Emulated Plugins
+
+" https://github.com/tpope/vim-surround
+" Plug 'tpope/vim-surround'
+set surround
+
+" https://github.com/easymotion/vim-easymotion
+" Plug 'easymotion/vim-easymotion'
+set easymotion
+
+
+" https://github.com/tpope/vim-commentary
+" Plug 'tpope/vim-commentary'
+set commentary
+
+" https://github.com/vim-scripts/ReplaceWithRegister
+" Plug 'inkarkat/vim-ReplaceWithRegister'
+set ReplaceWithRegister
+
+
+" https://github.com/machakann/vim-highlightedyank
+" Plug 'machakann/vim-highlightedyank'
+set highlightedyank
+
+" https://www.vim.org/scripts/script.php?script_id=2699
+" Plug 'vim-scripts/argtextobj.vim'
+set argtextobj
+
+
+" Use Idea to join lines smartly
+set ideajoin
+
+" Multiple cursors support
+set multiple-cursors
+
+set exchange
+
+
+" https://github.com/dbakker/vim-paragraph-motion
+" Plug 'dbakker/vim-paragraph-motion
+set vim-paragraph-motion
+
+" https://github.com/michaeljsmith/vim-indent-object
+" Plug 'michaeljsmith/vim-indent-object'
+set textobj-indent
+
+nmap <Leader><Leader> V
+
+" indent multiple operation{{{
+vnoremap < <gv
+vnoremap > >gv
+ "}}}
+"when remove by x key not default register{{{
+nnoremap x "_x
+vnoremap x "_x
+"}}}
+
+nmap s <Plug>(easymotion-f2)
+
+map <leader>f <Plug>(easymotion-bd-f)
+map <leader>w <Plug>(easymotion-bd-w)
+map <leader>s <Plug>(easymotion-bd-f2)
+" map <leader>l <Plug>(easymotion-bd-jk)
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" like as vim default.{{{
+nmap n /<CR>
+nmap N ?<CR>
+"}}}
+
+" below command is disabled because command not supported by intellij
+" map n <Plug>(easymotion-next)
+" map N <Plug>(easymotion-prev)
+
+" insert mode key map as bash.{{{
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$<Right>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-h> <BS>
+inoremap <C-d> <Del>
+inoremap <C-k> <C-o>D<Right>
+inoremap <C-u> <C-o>d^
+inoremap <C-w> <C-o>db
+"}}}
+
+nmap <Leader>o :action GotoFile<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>l :action RecentFiles<CR>
+nmap <Leader>g :action FindInPath<CR>
+nmap <Leader>t :action GotoAction<CR>
+nmap <Leader>n :action NextTab<CR>
+nmap <Leader>p :action PrevTab<CR>
+nmap <C-w>s :action SplitHorizontally<CR>
+nmap <C-w>v :action SplitVertically<CR>
+nnoremap j gj
+nnoremap k gk
+
