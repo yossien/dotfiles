@@ -338,7 +338,7 @@ nnoremap * *zz
 nnoremap # #zz
 
 let g:seoul256_background=235
-colorscheme senburn
+colorscheme zenburn
 
 " not work in neovim.
 " inoremap <ESC> <ESC>:set iminsert=0<CR>
