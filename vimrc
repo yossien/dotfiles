@@ -158,6 +158,10 @@ Plugin 'simeji/winresizer'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'thinca/vim-quickrun'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'Luxed/ayu-vim'
+Plugin 'kyoz/purify', { 'rtp':'vim' }
+Plugin 'arcticicestudio/nord-vim'
 "}}}
 
 call vundle#end()            " required
@@ -174,8 +178,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "}}}
-
-autocmd GUIEnter * set transparency=10
 
 " enable winresizer{{{
 let g:winresizer_gui_enable = 1
@@ -335,6 +337,8 @@ nnoremap N nzz
 nnoremap * *zz
 nnoremap # #zz
 
+let g:seoul256_background=235
+colorscheme senburn
 
 " not work in neovim.
 " inoremap <ESC> <ESC>:set iminsert=0<CR>
