@@ -13,3 +13,5 @@ mkln p10k.zsh
 
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 ln -s ${pwd}/colors ~/.config/nvim/colors
+ln -s ${pwd}/colors ~/.vim/colors
+
