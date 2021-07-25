@@ -141,3 +141,5 @@ fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
+# To customize prompt, run `p10k configure` or edit ~/dev_workspace/dotfiles/p10k.zsh.
+# [[ ! -f ~/dev_workspace/dotfiles/p10k.zsh ]] || source ~/dev_workspace/dotfiles/p10k.zsh
