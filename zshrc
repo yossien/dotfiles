@@ -142,4 +142,4 @@ fh() {
 }
 
 # To customize prompt, run `p10k configure` or edit ~/dev_workspace/dotfiles/p10k.zsh.
-# [[ ! -f ~/dev_workspace/dotfiles/p10k.zsh ]] || source ~/dev_workspace/dotfiles/p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
