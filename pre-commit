@@ -1,0 +1,22 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# pretty-quick
+yarn pretty-quick --staged
+
+# cSpell
+git diff --name-only --staged --diff-filter=ACMR | grep '\(src\|tests\).*\(js\|ts\|tsx\|vue\)$' | xargs cspell
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+# eslint
+for FILE in $(git diff --name-only --staged --diff-filter=ACMR | grep '\(src\|tests\).*\(js\|ts\|tsx\|vue\)$')
+do
+    echo linter check ${FILE}
+    npx eslint --quiet --cache ${FILE}
+    if [ $? -ne 0 ]; then
+        echo -e "${FILE}"
+        exit 1
+    fi
+done
