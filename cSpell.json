@@ -1,0 +1,34 @@
+// cSpell Settings
+{
+  // Version of the setting file.  Always 0.1
+  "flagWords": ["hte"],
+  // language - current active spelling language
+  "ignorePaths": ["node_modules/**"],
+  // words - list of words to be always considered correct
+  // VSCode languageId. i.e. typescript, java, go, cpp, javascript, markdown, latex
+  "ignoreWords": ["deduping"],
+  "ignoreRegExpList": ["no[a-z]+"],
+  "language": "en",
+  // flagWords - list of words to be always considered incorrect
+  // This is useful for offensive words and common spelling errors.
+  // For example "hte" should be "the"
+  "languageId": "typescript,javascript",
+  "version": "0.1",
+  "words": [
+    "axios",
+    "avenir",
+    "grayscale",
+    "uikit",
+    "vuex",
+    "mkdirp",
+    "tsmerge",
+    "githubusercontent",
+    "streetsidesoftware",
+    "vsmarketplacebadge",
+    "visualstudio",
+    "fontawesome",
+    "fortawesome",
+    "stylesheet",
+    "Dasharray"
+  ]
+}

@@ -1,0 +1,42 @@
+# editorConfig setting
+# https://EditorConfig.org
+
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.txt]
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = false
+
+[*.{html, js, ts, tsx, vue, json, css, scss, y{a,}ml}]
+indent_size = 2
+
+[*.json]
+insert_final_newline = false
+
+[*.{js, ts}]
+curly_bracket_next_line = false
+spaces_around_brackets = true
+spaces_around_operators = true
+
+[*.{diff, md}]
+trim_trailing_whitespace = false
+
+[*.py]
+max_line_length = 119
+
+[Makefile]
+indent_style = tab
+
+[*.{md, Rmd, rst}]
+trim_trailing_whitespace = false
+indent_size = 2
+
