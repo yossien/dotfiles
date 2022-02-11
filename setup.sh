@@ -15,6 +15,9 @@ mkln p10k.zsh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle
 vim +PluginInstall +qall
 
+# install tpm for tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 ln -s ${PWD}/colors ~/.config/nvim/colors
 ln -s ${PWD}/colors ~/.vim/colors
