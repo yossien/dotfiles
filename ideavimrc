@@ -22,6 +22,7 @@ set surround
 
 " https://github.com/easymotion/vim-easymotion
 " Plug 'easymotion/vim-easymotion'
+" see https://github.com/AlexPl292/IdeaVim-EasyMotion
 set easymotion
 
 
@@ -73,9 +74,9 @@ vnoremap x "_x
 
 nmap s <Plug>(easymotion-f2)
 
-map <leader>f <Plug>(easymotion-bd-f)
-map <leader>w <Plug>(easymotion-bd-w)
-map <leader>s <Plug>(easymotion-bd-f2)
+map <Leader>f <Plug>(easymotion-bd-f)
+map <Leader>w <Plug>(easymotion-bd-w)
+map <Leader>s <Plug>(easymotion-bd-f2)
 " map <leader>l <Plug>(easymotion-bd-jk)
 
 " JK motions: Line motions

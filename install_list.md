@@ -22,7 +22,7 @@ https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20
  * MesloLGS NF Bold Italic.ttf
 
 ~~~
-$ brew insall --cask homebrew/cask-fonts/font-meslo-for-powerline
+$ brew install --cask homebrew/cask-fonts/font-meslo-for-powerline
 ~~~
 
 ## Ricty
@@ -53,6 +53,12 @@ $ brew install --cask font-hack-nerd-font
 
 # some tools install by brew
 
+* anyenv
+* bottom
+* dnsmask
+* dust
+* exa
+* fd
 * fzf
 * jq
 * neovim
@@ -60,6 +66,10 @@ $ brew install --cask font-hack-nerd-font
 * bat
 * lsd
 * glances
+* procs
+* ripgrep
+* zoxide
+* wezterm
 
 ~~~
 $ brew install fzf jq neovim tmux bat lsd glances

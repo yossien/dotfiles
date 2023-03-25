@@ -5,11 +5,32 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="/usr/local/opt/luajit-openresty/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
+# homebrew
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# docker (lima)
+# export DOCKER_HOST=unix://$HOME/docker.sock
+
+
+# nodenv
+
+## NOTE: replace nodewnv with anyenv
+## export PATH="/usr/local/opt/luajit-openresty/bin:$PATH"
+## export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+#### export PATH="$HOME/.nodenv/bin:$PATH"
+## eval "$(nodenv init -)"
+
+# pyenv PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+eval "$(pyenv init -)"
+
 
 alias chpf='(){echo -e "\033]1337;SetProfile=$1\a"}'
 ## ssave history 
@@ -82,24 +103,43 @@ zinit light zdharma-continuum/history-search-multi-word
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#00ff00,bg=#333,bold,underline"
 
-# fzf utils
+# fzf utils -------------------------
+# fcd command fuzzy search for cd command.
 cd-fzf-find() {
-    local DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m)
+    local DIR=$(fd . -t d 2> /dev/null | fzf +m)
     if [ -n "$DIR" ]; then
         cd $DIR
     fi
 }
-alias fd=cd-fzf-find
+alias fcd=cd-fzf-find
 
+# fv command fuzzy search for vim
 vim-fzf-find() {
-    local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m)
+    local FILE=$(fd . -t f 2> /dev/null | fzf +m)
     if [ -n "$FILE" ]; then
         ${EDITOR:-vim} $FILE
     fi
 }
 alias fv=vim-fzf-find
 
-# Use fd and fzf to get the args to a command.
+fzf-find-with-preview() {
+   local FILE=$(fd -t f | fzf --preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%)
+   if [ -n "$FILE" ]; then
+     $@ $FILE
+   fi
+}
+alias fp=fzf-find-with-preview
+
+fzf-find-multi() {
+   local FILE=$(fd . -t f 2> /dev/null | fzf +m)
+   if [ -n "$FILE" ]; then
+     echo $FILE
+     $@ $FILE
+   fi
+}
+alias fm=fzf-find-multi
+
+# Use fcd and fzf to get the args to a command.
 # Works only with zsh
 # Examples:
 # f mv # To move files. You can write the destination after selecting the files.
@@ -107,14 +147,10 @@ alias fv=vim-fzf-find
 # f 'echo Selected music:' --extention mp3
 # fm rm # To rm files in current directory
 f() {
-    sels=( "${(@f)$(fd "${fd_default[@]}" "${@:2}"| fzf)}" )
+    sels=( "${(@f)$(fcd "${fd_default[@]}" "${@:2}"| fzf)}" )
 
     test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
 }
-
-# Like f, but not recursive.
-fm() f "$@" --max-depth 1
-
 # Deps
 alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
 fzf-noempty () {
@@ -141,3 +177,30 @@ fh() {
 
 # To customize prompt, run `p10k configure` or edit ~/dev_workspace/dotfiles/p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# zoxide setting
+eval "$(zoxide init zsh)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/harayoshiaki/.pyenv/versions/miniconda3-latest/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/harayoshiaki/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh" ]; then
+        . "/Users/harayoshiaki/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/harayoshiaki/.pyenv/versions/miniconda3-latest/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# anyenv
+eval "$(anyenv init -)"
+
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/harayoshiaki/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
